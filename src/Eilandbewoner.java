@@ -9,7 +9,23 @@
  * @author Levi
  */
 public abstract class Eilandbewoner {
-    public abstract void reageerOpOverstroming();
-    public abstract void reageerOpVulkaanuibarsting();
+    protected String naam;
+
+    public Eilandbewoner(String naam) {
+        setNaam(naam);
+    }
+
+    public void getNaam() {
+        System.out.print(naam);
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+    
+    
+    
+    protected abstract void reageerOpOverstroming();
+    protected abstract void reageerOpVulkaanuibarsting();
     
 }

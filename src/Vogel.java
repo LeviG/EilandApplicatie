@@ -8,7 +8,11 @@
  *
  * @author Levi
  */
-public class Vogel  extends Eilandbewoner{
+public class Vogel extends Eilandbewoner{
+
+    public Vogel(String naam) {
+        super(naam);
+    }
 
     @Override
     public void reageerOpOverstroming() {
@@ -17,7 +21,7 @@ public class Vogel  extends Eilandbewoner{
 
     @Override
     public void reageerOpVulkaanuibarsting() {
-        System.out.println("Ik vlieg hogerop");
+        System.out.println(" vliegt hogerop");
     }
     
 }
