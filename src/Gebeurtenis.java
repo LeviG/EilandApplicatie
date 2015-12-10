@@ -9,5 +9,5 @@
  * @author Levi
  */
 public enum Gebeurtenis {
-    OVERSTROMING,VULKAANUITBARSTING,GODZILLA
+    OVERSTROMING,VULKAANUITBARSTING
 }

@@ -12,9 +12,9 @@ public abstract class Eilandbewoner implements Observer {
 
     @Override
     public void update(Gebeurtenis gebeurtenis) {
-        System.out.println("Hallo " + getNaam() + ", Er is een  " + gebeurtenis.toString() + " aan de gang.");
+        System.out.println("Hallo " + getNaam() + ", er is een "
+                + gebeurtenis + " aan de gang.");
         switch (gebeurtenis) {
-            case GODZILLA:
             case OVERSTROMING:
                 this.reageerOpOverstroming();
                 break;
@@ -33,7 +33,8 @@ public abstract class Eilandbewoner implements Observer {
     public String getNaam() {
         return naam;
     }
-    
+
     public abstract void reageerOpOverstroming();
+
     public abstract void reageerOpVulkaanuitbarsting();
 }

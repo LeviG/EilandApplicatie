@@ -56,13 +56,13 @@ public class NewMain {
         Scanner sc = new Scanner(System.in);
         System.out.println(" Druk O voor overstroming en V voor vulkaanuitbarsting, S om te stoppen");
         String input = sc.next();
-
-        while (!input.equals("S")) {
-            if (input.equals("O")) {
+        
+        while (!input.equalsIgnoreCase("s")) {
+            if (input.equalsIgnoreCase("o")) {
 
                 bali.setGebeurtenis(Gebeurtenis.OVERSTROMING);
             }
-            if (input.equals("V")) {
+            if (input.equalsIgnoreCase("v")) {
                 bali.setGebeurtenis(Gebeurtenis.VULKAANUITBARSTING);
             }
             System.out.println(" Druk O voor overstroming en V voor vulkaanuitbarsting, S om te stoppen");
