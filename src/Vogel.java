@@ -1,3 +1,5 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,20 +10,22 @@
  *
  * @author Levi
  */
-public class Vogel extends Eilandbewoner{
+public class Vogel extends Eilandbewoner {
 
     public Vogel(String naam) {
         super(naam);
     }
+    
+    
 
     @Override
     public void reageerOpOverstroming() {
-        System.out.println(" vliegt in een boom");
+        System.out.println(getNaam() + " vliegt in een boom");
     }
 
     @Override
-    public void reageerOpVulkaanuibarsting() {
-        System.out.println(" vliegt hogerop");
+    public void reageerOpVulkaanuitbarsting() {
+        System.out.println(getNaam() + " vliegt hogerop");
     }
-    
+
 }

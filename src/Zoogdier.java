@@ -13,15 +13,17 @@ public class Zoogdier extends Eilandbewoner{
     public Zoogdier(String naam) {
         super(naam);
     }
+    
 
     @Override
     public void reageerOpOverstroming() {
-        System.out.println(" gaat naar de bergen");
+        System.out.println(getNaam() + " schuilt in een hol");
     }
 
     @Override
-    public void reageerOpVulkaanuibarsting() {
-        System.out.println(" schuilt in het hol");
+    public void reageerOpVulkaanuitbarsting() {
+        System.out.println(getNaam() +  " Gaat naar de bergen");
     }
+ 
     
 }

@@ -14,28 +14,38 @@ import java.util.Scanner;
  *
  * @author Levi
  */
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ *
+ * @author Levi
+ */
 public class NewMain {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        Eiland eiland = Eiland.getInstance();
-        Scanner sc = new Scanner(System.in);
+        // We maken een instantie van eiland.
+        Eiland bali = Eiland.INSTANCE;
+        BewonerFactory factory = new BewonerFactory();
+
         try (BufferedReader br = new BufferedReader(new FileReader(new File("eilandbewoners.txt")))) {
             String regel = br.readLine();
             while (regel != null) {
-                char soortBewoner = regel.charAt(0);
+                String soortBewoner = regel.substring(0, 1);
                 String naam = regel.substring(1, regel.length());
+                bali.registerObserver(factory.getBewoner(soortBewoner, naam));
 
-                if (soortBewoner == 'V') {
-
-                    eiland.addBewoner(new Vogel(naam));
-
-                } else if (soortBewoner == 'Z') {
-                    eiland.addBewoner(new Zoogdier(naam));
-                }
                 regel = br.readLine();
 
             }
@@ -43,20 +53,21 @@ public class NewMain {
             ex.printStackTrace();
         }
 
+        Scanner sc = new Scanner(System.in);
         System.out.println(" Druk O voor overstroming en V voor vulkaanuitbarsting, S om te stoppen");
         String input = sc.next();
-        
 
-            if (input == "O") {
-                eiland.overstroming();
+        while (!input.equals("S")) {
+            if (input.equals("O")) {
+
+                bali.setGebeurtenis(Gebeurtenis.OVERSTROMING);
             }
-            if (input == "V") {
-                eiland.vulkaanuitbarsting();
+            if (input.equals("V")) {
+                bali.setGebeurtenis(Gebeurtenis.VULKAANUITBARSTING);
             }
-            
-            eiland.overstroming();
-        
-        
+            System.out.println(" Druk O voor overstroming en V voor vulkaanuitbarsting, S om te stoppen");
+            input = sc.next();
+        }
     }
 
 }

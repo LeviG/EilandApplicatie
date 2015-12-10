@@ -8,6 +8,11 @@
  *
  * @author Levi
  */
-public enum Gebeurtenis {
-    OVERSTROMING,VULKAANUITBARSTING,GODZILLA
+public interface Subject {
+
+    public void registerObserver(Observer observer);
+
+    public void removeObserver(Observer observer);
+
+    public void notifyObservers();
 }

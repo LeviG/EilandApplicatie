@@ -8,24 +8,32 @@
  *
  * @author Levi
  */
-public abstract class Eilandbewoner {
+public abstract class Eilandbewoner implements Observer {
+
+    @Override
+    public void update(Gebeurtenis gebeurtenis) {
+        System.out.println("Hallo " + getNaam() + ", Er is een  " + gebeurtenis.toString() + " aan de gang.");
+        switch (gebeurtenis) {
+            case GODZILLA:
+            case OVERSTROMING:
+                this.reageerOpOverstroming();
+                break;
+            case VULKAANUITBARSTING:
+                this.reageerOpVulkaanuitbarsting();
+                break;
+        }
+    }
+
     protected String naam;
 
     public Eilandbewoner(String naam) {
-        setNaam(naam);
-    }
-
-    public void getNaam() {
-        System.out.print(naam);
-    }
-
-    public void setNaam(String naam) {
         this.naam = naam;
     }
+
+    public String getNaam() {
+        return naam;
+    }
     
-    
-    
-    protected abstract void reageerOpOverstroming();
-    protected abstract void reageerOpVulkaanuibarsting();
-    
+    public abstract void reageerOpOverstroming();
+    public abstract void reageerOpVulkaanuitbarsting();
 }

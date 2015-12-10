@@ -1,12 +1,4 @@
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 /*
@@ -18,36 +10,48 @@ import java.util.ArrayList;
  *
  * @author Levi
  */
-public class Eiland {
+public enum Eiland implements Subject {
 
-    private static Eiland uniqueInstance;
-    private ArrayList<Eilandbewoner> bewoners = new ArrayList<>();
+    INSTANCE;
 
-    public void addBewoner(Eilandbewoner eilandbewoner) {
-        bewoners.add(eilandbewoner);
+    private ArrayList<Observer> observers = new ArrayList<>();
+    Gebeurtenis gebeurtenis;
+
+    public ArrayList<Observer> getObservers() {
+        return observers;
     }
 
-    public void overstroming() {
-        for (Eilandbewoner eilandbewoner : bewoners) {
-            eilandbewoner.getNaam();
-            eilandbewoner.reageerOpOverstroming();
-        }
-    }
-    public void vulkaanuitbarsting() {
-        for (Eilandbewoner eilandbewoner : bewoners) {
-            eilandbewoner.getNaam();
-            eilandbewoner.reageerOpVulkaanuibarsting();
-        }
+    public void setObservers(ArrayList<Observer> observers) {
+        this.observers = observers;
     }
 
-    private Eiland() {
+    public Gebeurtenis getGebeurtenis() {
+        return gebeurtenis;
+    }
+
+    public void setGebeurtenis(Gebeurtenis gebeurtenis){
+        this.gebeurtenis = gebeurtenis;
+        notifyObservers();
+    }
+
+    @Override
+    public void notifyObservers() {
+        System.out.println("We verwittigen alle bewoners als er een gebeurtenis is");
+        observers.stream().forEach((ob) -> {
+            ob.update(gebeurtenis);
+        });
 
     }
 
-    public static Eiland getInstance() {
-        if (uniqueInstance == null) {
-            uniqueInstance = new Eiland();
-        }
-        return uniqueInstance;
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
+
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+
     }
 }

@@ -8,6 +8,6 @@
  *
  * @author Levi
  */
-public enum Gebeurtenis {
-    OVERSTROMING,VULKAANUITBARSTING,GODZILLA
+public interface Observer {
+    public void update(Gebeurtenis gebeurtenis);
 }
